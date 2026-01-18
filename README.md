@@ -1,4 +1,4 @@
-Overview
+## Overview
 
 This project demonstrates the architecture and internal mechanics of a basic Command & Control (C2) model written in Python.
 It was created to help students understand:
@@ -11,9 +11,9 @@ How defenders can detect these behaviors
 
 The implementation is intentionally simple and designed for didactic analysis.
 
-Architecture
+### Architecture
 
-The project is composed of two logical components:
+### The project is composed of two logical components:
 
 Component	Description
 Server	Acts as the command dispatcher and control interface
@@ -24,7 +24,7 @@ TCP sockets
 JSON serialization for message exchange
 Blocking command/response model
 
-Communication Flow
+### Communication Flow
 
 Client connects to the control server
 Server sends a command
@@ -34,7 +34,7 @@ Server displays the response
 
 [ Operator ] → Server → Client → Execution → Response → Server
 
-Implemented Capabilities (For Study)
+### Implemented Capabilities (For Study)
 Feature	Description
 Remote shell	Executes system commands
 Directory navigation	Change directories remotely
@@ -44,7 +44,7 @@ Screenshot capture	Demonstrates screen grabbing technique
 JSON C2 channel	Shows how structured data is exchanged
 Educational Objectives
 
-This project helps students understand:
+### This project helps students understand:
 Malware command execution pipelines
 How attackers build minimal C2 frameworks
 How socket-based exfiltration works
@@ -54,7 +54,7 @@ Repeated JSON payload traffic
 Unexpected file transfers
 Remote shell behaviors
 
-Detection & Defense Notes
+### Detection & Defense Notes
 
 Security teams can detect behavior like this through:
 Network IDS/IPS monitoring
@@ -62,17 +62,17 @@ EDR telemetry (process spawning, screenshot APIs)
 Unusual outbound TCP sessions
 Repeated command/response traffic patterns
 
-This project is excellent for:
+### This project is excellent for:
 Blue team detection training
 Red team simulation labs
 Malware traffic analysis
 CTF challenge creation
 
-Legal Disclaimer
+## Legal Disclaimer
 
-This code is provided strictly for educational purposes.
+## This code is provided strictly for educational purposes.
 
-Do NOT:
+## Do NOT:
 Use on real networks
 Deploy on machines you do not own
 Use for spying, persistence, unauthorized access, or data theft
