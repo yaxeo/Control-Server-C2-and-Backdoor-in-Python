@@ -70,7 +70,7 @@ CTF challenge creation
 
 ## Legal Disclaimer
 
-## This code is provided strictly for educational purposes.
+### This code is provided strictly for educational purposes.
 
 ## Do NOT:
 Use on real networks
