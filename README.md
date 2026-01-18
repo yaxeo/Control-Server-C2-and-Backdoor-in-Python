@@ -1,82 +1,121 @@
-## Overview
+## How It Works
 
-This project demonstrates the architecture and internal mechanics of a basic Command & Control (C2) model written in Python.
-It was created to help students understand:
+This project demonstrates the internal architecture of a basic Command & Control (C2) model implemented in Python.
+It simulates how a control server communicates with a remote client to send commands and receive execution results.
 
-How remote command execution works
-How C2 channels communicate
-File transfer techniques over sockets
-How attackers structure remote shells
-How defenders can detect these behaviors
+The implementation is intentionally simple and designed strictly for educational and defensive analysis purposes.
+It helps students understand how attackers structure C2 communication and how defenders can detect such behavior.
 
-The implementation is intentionally simple and designed for didactic analysis.
+## Architecture
 
-### Architecture
+The project is composed of two logical components:
 
-### The project is composed of two logical components:
+Server  
+Acts as the command dispatcher and control interface used by the operator.
 
-Component	Description
-Server	Acts as the command dispatcher and control interface
-Client	Simulates an infected endpoint that receives and executes commands
+Client  
+Simulates an infected endpoint that connects back to the server and executes received commands.
 
-Both sides communicate using:
-TCP sockets
-JSON serialization for message exchange
-Blocking command/response model
+Both components communicate using:
+- TCP sockets
+- JSON serialization for message exchange
+- A blocking command/response model
 
-### Communication Flow
+## Communication Flow
 
-Client connects to the control server
-Server sends a command
-Client processes the command
-Output is returned to the server
-Server displays the response
+1. The client connects to the control server
+2. The server sends a command
+3. The client processes and executes the command
+4. The execution output is returned to the server
+5. The server displays the response to the operator
 
 [ Operator ] → Server → Client → Execution → Response → Server
 
-### Implemented Capabilities (For Study)
-Feature	Description
-Remote shell	Executes system commands
-Directory navigation	Change directories remotely
-File upload	Transfer files to remote system
-File download	Retrieve files from remote system
-Screenshot capture	Demonstrates screen grabbing technique
-JSON C2 channel	Shows how structured data is exchanged
-Educational Objectives
+## Features
 
-### This project helps students understand:
-Malware command execution pipelines
-How attackers build minimal C2 frameworks
-How socket-based exfiltration works
-What defenders should monitor:
-Suspicious outbound TCP connections
-Repeated JSON payload traffic
-Unexpected file transfers
-Remote shell behaviors
+Remote shell command execution  
+Remote directory navigation  
+File upload from server to client  
+File download from client to server  
+Screenshot capture simulation  
+JSON-based C2 communication channel  
 
-### Detection & Defense Notes
+## Requirements
 
-Security teams can detect behavior like this through:
-Network IDS/IPS monitoring
-EDR telemetry (process spawning, screenshot APIs)
-Unusual outbound TCP sessions
-Repeated command/response traffic patterns
+Python 3.x  
+Linux or Windows system  
 
-### This project is excellent for:
-Blue team detection training
-Red team simulation labs
-Malware traffic analysis
-CTF challenge creation
+Required Python libraries:
+- pyautogui
+- termcolor
+
+## Installation
+
+### Clone the repository
+git clone https://github.com/yourusername/basic-c2-simulator.git
+cd basic-c2-simulator
+
+### Install dependencies
+pip install pyautogui termcolor
+
+## Usage
+
+### Start the server
+python server.py
+
+### Start the client
+python backdoor.py
+
+Once connected, the server provides an interactive shell interface for issuing commands.
+
+## Implemented Capabilities
+
+Execute system commands remotely  
+Change directories on the client system  
+Upload files to the client  
+Download files from the client  
+Capture screenshots from the client  
+Structured command exchange using JSON  
+
+## Detection & Defense Notes
+
+From a defensive perspective, behavior like this can be detected through:
+
+Network IDS/IPS monitoring  
+EDR telemetry (process execution, screenshot APIs)  
+Unusual outbound TCP connections  
+Repeated command/response traffic patterns  
+Suspicious file transfer activity  
+
+## Use Cases
+
+Blue Team detection training  
+Red Team simulation labs  
+Malware traffic analysis  
+Security research and education  
+CTF challenge creation  
+
+## Future Improvements
+
+Encrypted communication (TLS)  
+Authentication between client and server  
+Non-blocking communication model  
+Beaconing and heartbeat simulation  
+Traffic obfuscation techniques  
+Centralized logging and telemetry  
 
 ## Legal Disclaimer
 
-### This code is provided strictly for educational purposes.
+This project is provided strictly for educational purposes only.
 
-## Do NOT:
-Use on real networks
-Deploy on machines you do not own
-Use for spying, persistence, unauthorized access, or data theft
-Any misuse is the sole responsibility of the user.
+### Do NOT:
+Use on real networks  
+Deploy on systems you do not own  
+Use for spying, persistence, unauthorized access, or data theft  
 
-License
-Released under the MIT License for educational use.
+Any misuse of this code is the sole responsibility of the user.
+
+## License
+
+This project is licensed under the MIT License.
+
